@@ -1,0 +1,9 @@
+*.pyc
+*~
+__pycache__
+agevenv
+db.sqlite3
+.DS_Store
+/static
+
+
