@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 import markdown
 
+
 # Create your models here.
 
 
@@ -10,11 +11,10 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField()
     content = models.TextField()
-    content_html = models.TextField(editable= False)
+    content_html = models.TextField(editable=False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
 
     class Meta:
         ordering = ['-published_date', '-id']
@@ -31,3 +31,10 @@ class Post(models.Model):
         super().save(*args, **kwargs)
 
 
+class Image(models.Model):
+    upload = models.ImageField(upload_to='blog/images/')
+    description = models.TextField(blank=True, default='')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='images')
+
+    def __str__(self):
+        return self.description
