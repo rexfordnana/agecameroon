@@ -1,10 +1,11 @@
-{% extends "layout.html" %}
+{% extends "blog/layout.html" %}
 
 {% block title %} Posts {% endblock  %}
+
 {% block content %}
+
 <ul>
     {{ object_list|unordered_list }}
-
 </ul>
 
 {% endblock %}

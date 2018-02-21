@@ -8,9 +8,9 @@ import markdown
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    slug = models.SlugField(default="")
-    content = models.TextField(default="")
-    content_html = models.TextField(editable=False, default="")
+    slug = models.SlugField()
+    content = models.TextField()
+    content_html = models.TextField(editable= False)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     published_date = models.DateTimeField(blank=True, null=True)
